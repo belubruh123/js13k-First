@@ -1,0 +1,3 @@
+/* minimal reset + full canvas */
+html,body{height:100%;margin:0;background:#021;}
+canvas{width:100vw;height:100vh;background:#123;image-rendering:pixelated;display:block;}
