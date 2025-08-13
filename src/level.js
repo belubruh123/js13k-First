@@ -18,14 +18,12 @@ export class Level{
    const c=this.map[y][x];
    if(c=='P'){this.start={x:x*this.t,y:y*this.t};this.map[y][x]='.';}
    if(c=='G'){this.guards.push({x:x*this.t,y:y*this.t,dir:1});this.map[y][x]='.';}
-   if(c=='K'){this.gem={x:x*this.t,y:y*this.t,w:this.t,h:this.t,taken:0};}
-   if(c=='D'){this.exit={x:x*this.t,y:y*this.t,w:this.t,h:this.t,open:0};this.map[y][x]='.';}
+
    if(c=='T'){this.torches.push({x:x*this.t,y:y*this.t});this.map[y][x]='.';}
   }
  }
  solid(px,py){const x=Math.floor(px/this.t),y=Math.floor(py/this.t);return this.map[y]&&this.map[y][x]=='#';}
  collide(r){const t=this.t;for(let y=r.y;y<r.y+r.h;y+=t)for(let x=r.x;x<r.x+r.w;x+=t)if(this.solid(x,y))return 1;return 0;}
- collect(cat){if(!this.gem.taken&&hit(cat,this.gem)){this.gem.taken=1;this.exit.open=1;}
-  if(this.exit.open&&hit(cat,this.exit))return 1;return 0;}
+
 }
 export const level=new Level();
